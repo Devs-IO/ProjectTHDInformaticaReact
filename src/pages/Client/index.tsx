@@ -1,9 +1,12 @@
+import Button from 'components/Button';
+import Header from 'components/Header';
 import { Container } from './styles';
 
 export const Client = () => {
   return (
     <Container>
-      <h1>Cliente</h1>
+      <Header>Cliente</Header>
+      <Button type="button">Cadastrar</Button>
       <p>
         {' '}
         ksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdas

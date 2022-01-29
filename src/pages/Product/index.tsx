@@ -1,9 +1,10 @@
+import Header from 'components/Header';
 import { Container } from './styles';
 
 export const Product = () => {
   return (
     <Container>
-      <h1>Product</h1>
+      <Header>Produtos</Header>
       <p>
         {' '}
         ksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdas
