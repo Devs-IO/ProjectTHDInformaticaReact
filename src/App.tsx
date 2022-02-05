@@ -9,8 +9,8 @@ export const App = () => {
       <Container>
         <Menu />
         <Routes />
-        <GlobalStyle />
       </Container>
+      <GlobalStyle />
     </Router>
   );
 };
