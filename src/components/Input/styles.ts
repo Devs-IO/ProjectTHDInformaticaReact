@@ -14,6 +14,7 @@ export const Container = styled.div<ContainerProps>`
   color: #09090A;
   width: 100%;
   display: flex;
+  margin-top: 8px;
   align-items: center;
   & + div {
     margin-top: 8px;

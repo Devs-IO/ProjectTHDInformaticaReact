@@ -10,7 +10,7 @@ export const Routes = () => {
       <Route path="*" element={<Navigate replace to="/home" />} />
       <Route path="/products" element={<Product />} />
       <Route path="/clients" element={<Client />} />
-      <Route path="/client/new" element={<ClientRegister />} />
+      <Route path="/clients/new" element={<ClientRegister />} />
       <Route path="/sales" element={<Sales />} />
     </Switch>
   );

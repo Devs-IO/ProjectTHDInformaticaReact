@@ -31,7 +31,7 @@ export const Client = () => {
 
   return (
     <Container>
-      <Link to="/client/new">
+      <Link to="/clients/new">
         <Button type="button">
           <RiFileEditLine />
           <span>Cadastrar Clientes</span>
