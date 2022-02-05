@@ -2,16 +2,15 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
 
 import getValidationErrors from 'utils/getValidationErrors';
 import Button from 'components/Button';
 import Header from 'components/Header';
-import { Link } from 'react-router-dom';
+import InputSearch from 'components/InputSearch';
 
 import { Container, Content } from './styles';
-import InputSearch from 'components/InputSearch';
 
 export const Client = () => {
   const formRef = useRef<FormHandles>(null);
@@ -32,7 +31,7 @@ export const Client = () => {
 
   return (
     <Container>
-      <Link to="/clientregister">
+      <Link to="/client/new">
         <Button type="button">
           <RiFileEditLine />
           <span>Cadastrar Clientes</span>
