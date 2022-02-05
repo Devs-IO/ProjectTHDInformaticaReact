@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { shade } from 'polished'; // manipulação de cores
+import { shade } from 'polished';
 
 import signInBackground from '../assets/Home/HomeImage.png';
 
