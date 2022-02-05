@@ -1,13 +1,14 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 0.5rem;
   padding-left: 2.0rem;
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 1180px; */
 `;
 
 export const Content = styled.div`
-  width: 100%;
-  max-width: 1180px;
   padding: 0 30px;
   margin: 32px auto;
 

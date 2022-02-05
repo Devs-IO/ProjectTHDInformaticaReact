@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid #ffffff;
   padding: 16px;
   color: #09090A;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   margin-top: 8px;
   align-items: center;
@@ -36,7 +36,7 @@ export const Container = styled.div<ContainerProps>`
       color: #0D3C84;
     `}
   input {
-    flex: 1;
+    /* flex: 1; */
     background: transparent;
     border: 0;
     color: #CCCCCC;

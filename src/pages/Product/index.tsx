@@ -40,28 +40,6 @@ export const Product = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
-        <p>
-          {' '}
-          ksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdas
-          hhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdh
-          asjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdj
-          kahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhas
-          kjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhas
-          hdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhaks
-          hdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskda
-          sdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkah
-          kksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashh
-          askhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasj
-          hdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahd
-          jkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdh
-          ajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjka
-          shdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahs
-          jdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkaskdasdasjkd
-          hakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahkksadkas
-          kdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdk
-          ahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdash
-          haskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjka shdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdashhaskhashdkahk
-        </p>
       </Content>
     </Container>
   );

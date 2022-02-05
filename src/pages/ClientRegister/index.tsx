@@ -65,12 +65,6 @@ export const ClientRegister = () => {
             <span>Cancelar</span>
           </Button>
         </Form>
-        <p>
-          {' '}
-          ksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdas
-          hhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdh
-          asjhdjkahdashhaskhashdkahkksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdj
-        </p>
       </Content>
     </Container>
   );
