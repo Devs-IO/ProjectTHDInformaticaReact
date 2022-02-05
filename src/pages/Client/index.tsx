@@ -1,12 +1,13 @@
 import Button from 'components/Button';
 import Header from 'components/Header';
 import { Container } from './styles';
+import { Link } from 'react-router-dom';
 
 export const Client = () => {
   return (
     <Container>
       <Header>Cliente</Header>
-      <Button type="button">Cadastrar</Button>
+      <Link to="/clientregister"><Button type="button">Cadastrar</Button></Link>
       <p>
         {' '}
         ksadkaskdasdasjkdhakshdjahsjdhashdjkashdhaskjdhajskhdjkahdjkhakjdhasjhdjkahdas
