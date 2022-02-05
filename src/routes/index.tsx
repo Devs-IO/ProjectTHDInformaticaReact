@@ -1,6 +1,6 @@
 import { Routes as Switch, Route, Navigate } from 'react-router-dom';
 
-import { Home, Product, Register, Client, Sales } from '../pages';
+import { Home, Product, Register, Client, Sales, ClientRegister } from '../pages';
 
 export const Routes = () => {
   return (
@@ -10,6 +10,7 @@ export const Routes = () => {
       <Route path="*" element={<Navigate replace to="/home" />} />
       <Route path="/products" element={<Product />} />
       <Route path="/clients" element={<Client />} />
+      <Route path="/clients/new" element={<ClientRegister />} />
       <Route path="/sales" element={<Sales />} />
     </Switch>
   );
