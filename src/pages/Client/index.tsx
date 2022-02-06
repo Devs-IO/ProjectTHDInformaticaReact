@@ -1,3 +1,4 @@
+import React from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
@@ -9,6 +10,7 @@ import getValidationErrors from 'utils/getValidationErrors';
 import Button from 'components/Button';
 import Header from 'components/Header';
 import InputSearch from 'components/InputSearch';
+import Table from 'components/Table';
 
 import { Container, Content } from './styles';
 
@@ -29,6 +31,38 @@ export const Client = () => {
     }
   }, []);
 
+  const columns = React.useMemo(
+    () => [
+      {
+        columns: [
+          {
+            Header: 'Nome',
+            accessor: 'name',
+          },
+          {
+            Header: 'Telefone',
+            accessor: 'phone',
+          },
+          {
+            Header: 'E-mail',
+            accessor: 'email',
+          },
+          {
+            Header: 'CPF',
+            accessor: 'cpf',
+          },
+          {
+            Header: 'Cidade',
+            accessor: 'city',
+          },
+        ],
+      },
+    ],
+    []
+  );
+
+  const data = React.useMemo(() => [], []);
+
   return (
     <Container>
       <Link to="/clients/new">
@@ -42,6 +76,8 @@ export const Client = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Clientes" />
         </Form>
+
+        <Table columns={columns} data={data} />
       </Content>
     </Container>
   );
