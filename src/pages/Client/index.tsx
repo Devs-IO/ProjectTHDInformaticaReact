@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
 
@@ -13,10 +12,21 @@ import InputSearch from 'components/InputSearch';
 import Table from 'components/Table';
 
 import { Container, Content } from './styles';
+import api from 'services/api';
+import axios from 'axios';
 
 export const Client = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  // Using useEffect to call the API once mounted and set the data
+  useEffect(() => {
+    (async () => {
+      const result = await api.get('/clients');
+      setData(result.data);
+    })();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -31,9 +41,10 @@ export const Client = () => {
     }
   }, []);
 
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
+        Header: 'Clientes',
         columns: [
           {
             Header: 'Nome',
@@ -60,8 +71,6 @@ export const Client = () => {
     ],
     []
   );
-
-  const data = React.useMemo(() => [], []);
 
   return (
     <Container>
