@@ -4,27 +4,36 @@ export const Container = styled.div`
   padding: 1rem;
 
   table {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.8rem;
     border-spacing: 0;
-    border: 1px solid black;
+    border-radius: 5px 5px 0px 0px;
+    font-size: 16px;
 
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
+    thead>tr {
+      background: #2B4C7E;
+      color: white;
+    }
+
+    tbody {
+        tr:nth-child(even) {
+          background: #fff;
         }
-      }
-    }
+        tr:nth-child(odd) {
+          background: #f0f0f0;
+        }
+  } 
 
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
+  tr {
+    height: 48px;
+  }
 
-      :last-child {
-        border-right: 0;
-      }
-    }
+  th,
+  td {
+    padding: 20px;
+  }
+
+
   }
 `
