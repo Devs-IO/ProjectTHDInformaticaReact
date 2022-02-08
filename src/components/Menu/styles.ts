@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.aside`
   width: 400px;
@@ -17,6 +18,10 @@ export const Container = styled.aside`
     justify-content: center;
     position: absolute;
     bottom: 0.7rem;
+    transition: background-color 0.5s;
+    &:hover {
+      background: ${shade(0.5, '#9C1524')};
+    }
     
     span {
       margin-left: 0.3rem;
