@@ -16,6 +16,12 @@ import Input from 'components/Input';
 export const ClientRegister = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
+  const [name,setName] =  useState("");
+  const [phone,setPhone] = useState("");
+  const [email,setEmail] = useState("");
+  const [cpf,setCpf] = useState("");
+  const [city,setCity] = useState("");
+
 
   const handleRegister = useCallback(async (data: any) => {
     try {
