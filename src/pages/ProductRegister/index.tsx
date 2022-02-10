@@ -41,7 +41,8 @@ export const ProductRegister = () => {
           </div>
           <div>
             <label>Tipo</label>
-            <datalist>
+            <input list="types" />
+            <datalist id="types" >
               <option>Tipo A</option>
               <option>tipo B</option>
             </datalist>
