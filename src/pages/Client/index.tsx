@@ -1,7 +1,7 @@
+import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
 
@@ -9,12 +9,24 @@ import getValidationErrors from 'utils/getValidationErrors';
 import Button from 'components/Button';
 import Header from 'components/Header';
 import InputSearch from 'components/InputSearch';
+import Table from 'components/Table';
 
 import { Container, Content } from './styles';
+import api from 'services/api';
+import axios from 'axios';
 
 export const Client = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  // Using useEffect to call the API once mounted and set the data
+  useEffect(() => {
+    (async () => {
+      const result = await api.get('/clients');
+      setData(result.data);
+    })();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -29,6 +41,37 @@ export const Client = () => {
     }
   }, []);
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Clientes',
+        columns: [
+          {
+            Header: 'Nome',
+            accessor: 'name',
+          },
+          {
+            Header: 'Telefone',
+            accessor: 'phone',
+          },
+          {
+            Header: 'E-mail',
+            accessor: 'email',
+          },
+          {
+            Header: 'CPF',
+            accessor: 'cpf',
+          },
+          {
+            Header: 'Cidade',
+            accessor: 'city',
+          },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <Container>
       <Link to="/clients/new">
@@ -42,6 +85,8 @@ export const Client = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Clientes" />
         </Form>
+
+        <Table columns={columns} data={data} />
       </Content>
     </Container>
   );
