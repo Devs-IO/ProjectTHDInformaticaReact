@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { useCallback, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { BsFillXCircleFill, BsFillCheckCircleFill } from 'react-icons/bs';
+import { useState } from 'react';
+import api from "../../services/api";
 
 import getValidationErrors from 'utils/getValidationErrors';
 import Button from 'components/Button';
@@ -25,6 +27,7 @@ export const ClientRegister = () => {
 
   const handleRegister = useCallback(async (data: any) => {
     try {
+      await api.post("/clients", data)
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -43,23 +46,49 @@ export const ClientRegister = () => {
         <Form ref={formRef} onSubmit={handleRegister}>
           <div>
             <label>Nome do Cliente</label>
-            <Input name="search" placeholder="Nome do Cliente" required />
+            <Input 
+            name="name" 
+            placeholder="Nome do Cliente" 
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required />
           </div>
           <div>
             <label>Telefone</label>
-            <Input name="phone" placeholder="Telefone" required />
+            <Input name="phone" 
+            placeholder="Telefone" 
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required />
           </div>
           <div>
             <label>Email</label>
-            <Input name="email" placeholder="Email" />
+            <Input name="email" 
+            placeholder="Email"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div>
             <label>CPF</label>
-            <Input name="cpf" placeholder="xxx.xxx.xxx-xx" />
+            <Input name="cpf" 
+            placeholder="xxx.xxx.xxx-xx"
+            type="text"
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
+            />
           </div>
           <div>
             <label>Cidade</label>
-            <Input name="city" placeholder="Cidade" />
+            <Input name="city" 
+            placeholder="Cidade"
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+             />
           </div>
 
           <Button type="submit">
