@@ -1,10 +1,9 @@
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { BsFillXCircleFill, BsFillCheckCircleFill } from 'react-icons/bs';
-import { useState } from 'react';
 import api from "../../services/api";
 
 import getValidationErrors from 'utils/getValidationErrors';
