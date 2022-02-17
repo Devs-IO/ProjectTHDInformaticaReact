@@ -1,26 +1,22 @@
-import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
-import { useNavigate, Link } from 'react-router-dom';
-import { RiFileEditLine } from 'react-icons/ri';
-
-import getValidationErrors from 'utils/getValidationErrors';
+import { Form } from '@unform/web';
 import Button from 'components/Button';
 import Header from 'components/Header';
 import InputSearch from 'components/InputSearch';
 import Table from 'components/Table';
-
-import { Container, Content } from './styles';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RiFileEditLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import api from 'services/api';
-import axios from 'axios';
+import getValidationErrors from 'utils/getValidationErrors';
+import * as Yup from 'yup';
+import { Container, Content } from './styles';
 
 export const Client = () => {
   const formRef = useRef<FormHandles>(null);
 
   const [data, setData] = useState([]);
 
-  // Using useEffect to call the API once mounted and set the data
   useEffect(() => {
     (async () => {
       const result = await api.get('/clients');
