@@ -40,27 +40,7 @@ export const Content = styled.div`
   }
 `;
 
-// export const Datalist = styled.datalist`
-//   background: #ffffff;
-//   border-radius: 10px;
-//   border: 2px solid #ffffff;
-//   padding: 16px;
-//   color: #09090A;
-//   /* width: 100%; */
-//   margin-top: 8px;
-//   & + div {
-//   margin-top: 8px;
 
-//   input {
-//     /* flex: 1; */
-//     background: transparent;
-//     border: 0;
-//     color: #CCCCCC;
-//     &::placeholder {
-//       color: #666360;
-//     }
-// }
-// `
 
 export const RegisterDiv = styled.div`
   width: 14.5vw;

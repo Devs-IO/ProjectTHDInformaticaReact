@@ -1,9 +1,10 @@
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
+import api from '../../services/api';
 
 import getValidationErrors from 'utils/getValidationErrors';
 import Button from 'components/Button';
@@ -11,10 +12,20 @@ import Header from 'components/Header';
 
 import { Container, Content } from './styles';
 import InputSearch from 'components/InputSearch';
+import Table from 'components/Table';
+
 
 export const Product = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await api.get('/products')
+      setData(result.data)
+    })();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -29,6 +40,21 @@ export const Product = () => {
     }
   }, []);
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Produtos',
+        columns: [
+          {
+            Header: 'Nome',
+            accessor: 'name',
+          },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <Container>
       <Link to={'/products/new'}>
@@ -42,6 +68,7 @@ export const Product = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
+        <Table columns={columns} data={data} />
       </Content>
     </Container>
   );
