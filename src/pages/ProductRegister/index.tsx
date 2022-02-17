@@ -17,9 +17,9 @@ import { Container, Content, RegisterDiv, Textarea } from './styles';
 import Select from 'components/Select';
 
 interface ProductsData {
-  id: string;
-  sell: string;
-  buy: string;
+  name: string;
+  sell_price: string;
+  buy_price: string;
   description: string;
   quantity: string;
   code: string;
@@ -28,8 +28,8 @@ interface ProductsData {
 export const ProductRegister = () => {
   const formRef = useRef<FormHandles>(null);
   const [name, setName] = useState("");
-  const [sell, setSell] = useState("");
-  const [buy, setBuy] = useState("")
+  const [sell_price, setSell] = useState("");
+  const [buy_price, setBuy] = useState("")
   const [description, setDescription] = useState("")
   const [quantity, setQuantity] = useState("")
   const [code, setCode] = useState("")
@@ -38,14 +38,14 @@ export const ProductRegister = () => {
     try {
       console.log(data);
       await api.post('/products', data);
+      alert("Foi?")
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
-
         formRef.current?.setErrors(errors);
-
         return;
       }
+      alert("Erro no cadastro");
     }
   }, []);
 
@@ -59,7 +59,7 @@ export const ProductRegister = () => {
             <Input 
               name="name"
               placeholder="Nome do Produto" 
-              value={name}
+              v-model={name}
               onChange={(e) => setName(e.target.value)}
               required />
           </div>
@@ -71,17 +71,17 @@ export const ProductRegister = () => {
             <RegisterDiv>
               <label>Preço de Venda</label>
               <Input
-                name="sell"
+                name="sell_price"
                 placeholder="R$"
-                value={sell}
+                value={sell_price}
               onChange={(e) => setSell(e.target.value)} />
             </RegisterDiv>
             <div style={{ width: '14.5vw' }}>
               <label>Preço de Compra</label>
               <Input 
-                name="buy" 
+                name="buy_price" 
                 placeholder=""
-                value={buy}
+                value={buy_price}
                 onChange={(e) => setBuy(e.target.value)}
                />
             </div>
@@ -92,7 +92,7 @@ export const ProductRegister = () => {
           </div>
           <div>
             <label>Descrição</label>
-            <Textarea 
+            <Textarea
               name="description" 
               placeholder="Descrição" 
               value={description}
