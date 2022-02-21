@@ -46,23 +46,3 @@ export const RegisterDiv = styled.div`
   width: 14.5vw;
   margin-right: 1vw;
 `
-
-export const Textarea = styled.textarea`
-background: #ffffff;
-border-radius: 10px;
-border: 2px solid #ffffff;
-padding: 16px;
-color: #09090A;
-/* width: 100%; */
-display: flex;
-margin-top: 8px;
-align-items: center;
-& + div {
-  margin-top: 8px;
-}
-resize: none;
-width: -webkit-fill-available;
-height: 25vh;
-font-family: 'Roboto Slab',serif;
-font-size: 16px;
-`

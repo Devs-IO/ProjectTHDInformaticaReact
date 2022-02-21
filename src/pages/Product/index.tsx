@@ -1,19 +1,16 @@
-import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
-import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { RiFileEditLine } from 'react-icons/ri';
-import api from '../../services/api';
-
-import getValidationErrors from 'utils/getValidationErrors';
+import { Form } from '@unform/web';
 import Button from 'components/Button';
 import Header from 'components/Header';
-
-import { Container, Content } from './styles';
 import InputSearch from 'components/InputSearch';
 import Table from 'components/Table';
-
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RiFileEditLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import getValidationErrors from 'utils/getValidationErrors';
+import * as Yup from 'yup';
+import api from '../../services/api';
+import { Container, Content } from './styles';
 
 export const Product = () => {
   const formRef = useRef<FormHandles>(null);
@@ -22,8 +19,8 @@ export const Product = () => {
 
   useEffect(() => {
     (async () => {
-      const result = await api.get('/products')
-      setData(result.data)
+      const result = await api.get('/products');
+      setData(result.data);
     })();
   }, []);
 
