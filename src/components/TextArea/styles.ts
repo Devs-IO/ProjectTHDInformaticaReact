@@ -12,18 +12,12 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid #ffffff;
   padding: 16px;
   color: #09090A;
-  /* width: 100%; */
   display: flex;
   margin-top: 8px;
   align-items: center;
   & + div {
     margin-top: 8px;
   }
-  resize: none;
-  width: -webkit-fill-available;
-  height: 25vh;
-  font-family: 'Roboto Slab',serif;
-  font-size: 16px;
   ${(props) =>
     props.isErrored &&
     css`
@@ -40,14 +34,22 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: #0D3C84;
     `}
-  /* input {
+  textarea {
     background: transparent;
     border: 0;
     color: #CCCCCC;
     &::placeholder {
       color: #666360;
     }
-  } */
+    background: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    resize: none;
+    width: -webkit-fill-available;
+    height: 25vh;
+    font-family: 'Roboto Slab',serif;
+    font-size: 16px;
+  }
   svg {
     margin-right: 16px;
   }

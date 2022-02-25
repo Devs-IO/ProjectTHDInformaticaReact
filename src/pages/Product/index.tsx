@@ -46,6 +46,30 @@ export const Product = () => {
             Header: 'Nome',
             accessor: 'name',
           },
+          {
+            Header: 'Categoria',
+            accessor: 'category_name',
+          },
+          {
+            Header: 'Fornecedor',
+            accessor: 'provider_name',
+          },
+          {
+            Header: 'Preço de Venda',
+            accessor: 'sell_price',
+          },
+          {
+            Header: 'Preço de Compra',
+            accessor: 'buy_price',
+          },
+          {
+            Header: 'Quantidade',
+            accessor: 'quantity',
+          },
+          {
+            Header: 'Codigo',
+            accessor: 'code',
+          },
         ],
       },
     ],
