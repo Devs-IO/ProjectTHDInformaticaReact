@@ -74,7 +74,7 @@ export const ProductRegister = () => {
           </div>
           <div>
             <label>Tipo</label>
-            <Select name="category" placeholder="Categorias" options={categories} />
+            <Select name="category_id" placeholder="Categorias" options={categories} />
           </div>
           <div style={{ display: 'flex' }}>
             <RegisterDiv>
@@ -88,7 +88,7 @@ export const ProductRegister = () => {
           </div>
           <div>
             <label>Fornecedor</label>
-            <Select name="provider" placeholder="Fornecedor" options={providers} />
+            <Select name="provider_id" placeholder="Fornecedor" options={providers} />
           </div>
           <div>
             <label>Descrição</label>
