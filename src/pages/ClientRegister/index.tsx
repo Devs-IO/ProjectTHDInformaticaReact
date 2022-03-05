@@ -23,7 +23,7 @@ interface ClientsData {
   email: string;
   phone: string;
   cpf: string;
-  city: string;
+  city_id: string;
 }
 
 export const ClientRegister = () => {
@@ -32,11 +32,11 @@ export const ClientRegister = () => {
 
   useEffect(() => {
     (async () => {
-      const result = await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/MG/municipios`);
+      const result = await api.get(`/cities`);
 
       const data = result.data.map((d: any) => ({
         value: d.id,
-        label: d.nome,
+        label: d.name,
       }));
 
       setCities(data);
@@ -45,8 +45,8 @@ export const ClientRegister = () => {
 
   const handleRegister = useCallback(async (data: ClientsData) => {
     try {
-      console.log(data);
       await api.post('/clients', data);
+      alert("Cadastrado com Sucesso!");
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -69,8 +69,6 @@ export const ClientRegister = () => {
               name="name"
               placeholder="Nome do Cliente"
               type="text"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
@@ -80,8 +78,6 @@ export const ClientRegister = () => {
               name="phone"
               placeholder="Telefone"
               type="text"
-              // value={phone}
-              // onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
@@ -91,8 +87,6 @@ export const ClientRegister = () => {
               name="email"
               placeholder="Email"
               type="text"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -101,14 +95,12 @@ export const ClientRegister = () => {
               name="cpf"
               placeholder="xxx.xxx.xxx-xx"
               type="text"
-              // value={cpf}
-              // onChange={(e) => setCpf(e.target.value)}
             />
           </div>
           <div>
             <label>Cidade</label>
             <Select
-              name="city"
+              name="city_id"
               options={cities}
               className="react-select-container"
               classNamePrefix="react-select"
