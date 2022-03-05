@@ -1,20 +1,28 @@
-import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RiFileEditLine } from 'react-icons/ri';
-
-import getValidationErrors from 'utils/getValidationErrors';
+import { Form } from '@unform/web';
 import Button from 'components/Button';
 import Header from 'components/Header';
-
-import { Container, Content } from './styles';
 import InputSearch from 'components/InputSearch';
+import Table from 'components/Table';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { RiFileEditLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import getValidationErrors from 'utils/getValidationErrors';
+import * as Yup from 'yup';
+import api from '../../services/api';
+import { Container, Content } from './styles';
 
 export const Product = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await api.get('/products');
+      setData(result.data);
+    })();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -29,17 +37,59 @@ export const Product = () => {
     }
   }, []);
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Produtos',
+        columns: [
+          {
+            Header: 'Nome',
+            accessor: 'name',
+          },
+          {
+            Header: 'Categoria',
+            accessor: 'category_name',
+          },
+          {
+            Header: 'Fornecedor',
+            accessor: 'provider_name',
+          },
+          {
+            Header: 'Preço de Venda',
+            accessor: 'sell_price',
+          },
+          {
+            Header: 'Preço de Compra',
+            accessor: 'buy_price',
+          },
+          {
+            Header: 'Quantidade',
+            accessor: 'quantity',
+          },
+          {
+            Header: 'Codigo',
+            accessor: 'code',
+          },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <Container>
-      <Button type="button">
-        <RiFileEditLine />
-        <span>Cadastrar Produtos</span>
-      </Button>
+      <Link to={'/products/new'}>
+        <Button type="button">
+          <RiFileEditLine />
+          <span>Cadastrar Produtos</span>
+        </Button>
+      </Link>
       <Header>Produtos</Header>
       <Content>
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
+        <Table columns={columns} data={data} />
       </Content>
     </Container>
   );

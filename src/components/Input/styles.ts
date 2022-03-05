@@ -10,9 +10,9 @@ export const Container = styled.div<ContainerProps>`
   background: #ffffff;
   border-radius: 10px;
   border: 2px solid #ffffff;
-  padding: 16px;
+  padding: 10px;
   color: #09090A;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   margin-top: 8px;
   align-items: center;
