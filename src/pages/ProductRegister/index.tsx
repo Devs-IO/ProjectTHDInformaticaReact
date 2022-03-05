@@ -52,7 +52,7 @@ export const ProductRegister = () => {
     try {
       console.log(data);
       await api.post('/products', data);
-      alert('Foi?');
+      alert('Cadatrado com sucesso!!!');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);

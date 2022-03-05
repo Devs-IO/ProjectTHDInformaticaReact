@@ -48,11 +48,11 @@ export const Product = () => {
           },
           {
             Header: 'Categoria',
-            accessor: 'category_name',
+            accessor: 'categories_name',
           },
           {
             Header: 'Fornecedor',
-            accessor: 'provider_name',
+            accessor: 'providers_name',
           },
           {
             Header: 'Preço de Venda',
@@ -69,6 +69,10 @@ export const Product = () => {
           {
             Header: 'Codigo',
             accessor: 'code',
+          },
+          {
+            Header: 'Ações',
+            accessor: '<BsTrash />',
           },
         ],
       },
