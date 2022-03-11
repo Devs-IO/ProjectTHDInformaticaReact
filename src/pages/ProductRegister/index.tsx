@@ -5,6 +5,7 @@ import Header from 'components/Header';
 import Input from 'components/Input';
 import Select from 'components/Select';
 import TextArea from 'components/TextArea';
+import { stringify } from 'querystring';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 import api from 'services/api';
@@ -50,13 +51,24 @@ export const ProductRegister = () => {
 
   const handleRegister = useCallback(async (data: ProductsData) => {
     try {
-      console.log(data);
+      const schema = Yup.object().shape({
+        name: Yup.string().max(200,"Nome Grande demais").required("Nome Obrigatório"),
+        category_id: Yup.string().required("Categoria Ogrigatória"),
+        provider_id: Yup.string().required("Fornecedor Obrigatório"),
+        buy_price: Yup.string().required("Preço de Compra Obrigatório"),
+        sell_price: Yup.string().required("Preço de Venda Obrigatório"),
+      });
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      
       await api.post('/products', data);
-      alert('Foi?');
+      alert('Cadatrado com sucesso!!!');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
         formRef.current?.setErrors(errors);
+          alert(err.message);
         return;
       }
       alert('Erro no cadastro');
