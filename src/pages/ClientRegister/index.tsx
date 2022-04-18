@@ -6,6 +6,7 @@ import Header from 'components/Header';
 import Input from 'components/Input';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
+import ReactModal from 'react-modal';
 import getValidationErrors from 'utils/getValidationErrors';
 import * as Yup from 'yup';
 import Select from '../../components/Select';
@@ -28,6 +29,7 @@ interface ClientsData {
 
 export const ClientRegister = () => {
   const formRef = useRef<FormHandles>(null);
+  const [showModal, setShowModal] = useState(false);
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
@@ -43,10 +45,15 @@ export const ClientRegister = () => {
     })();
   }, []);
 
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false);
+  }, [setShowModal]);
+
   const handleRegister = useCallback(async (data: ClientsData) => {
     try {
       await api.post('/clients', data);
-      alert("Cadastrado com Sucesso!");
+      //alert("Cadastrado com Sucesso!");
+      setShowModal(true);
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -61,6 +68,8 @@ export const ClientRegister = () => {
   return (
     <Container>
       <Header>Novo Cliente</Header>
+      <ReactModal isOpen={showModal}> <button onClick={handleCloseModal}>X</button> <p>Isso é uma Modal</p> 
+        </ReactModal>
       <Content>
         <Form ref={formRef} onSubmit={handleRegister}>
           <div>

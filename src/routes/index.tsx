@@ -1,7 +1,7 @@
 import { ProductRegister } from 'pages/ProductRegister';
 import { Routes as Switch, Route, Navigate } from 'react-router-dom';
 
-import { Home, Product, Register, Client, Sales, ClientRegister } from '../pages';
+import { Home, Product, Register, Client, Sales, ClientRegister, SaleRegister } from '../pages';
 
 export const Routes = () => {
   return (
@@ -14,6 +14,7 @@ export const Routes = () => {
       <Route path="/clients" element={<Client />} />
       <Route path="/clients/new" element={<ClientRegister />} />
       <Route path="/sales" element={<Sales />} />
+      <Route path="/sales/new" element={<SaleRegister />} />
     </Switch>
   );
 };
