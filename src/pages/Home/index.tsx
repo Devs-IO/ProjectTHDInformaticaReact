@@ -1,14 +1,14 @@
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 import Button from 'components/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
-import { Container, Content } from '../../styles/home';
-import { useCallback, useRef } from 'react';
-import getValidationErrors from '../../utils/getValidationErrors';
 import Input from 'components/Input';
+import { useCallback, useRef } from 'react';
 import Line from '../../assets/Home/Line.svg';
+import { Container, Content } from '../../styles/home';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 interface SignInFormData {
   email: string;
@@ -33,7 +33,7 @@ export const Home = () => {
         //   abortEarly: false,
         // });
 
-        navigate('/products');
+        navigate('/sales');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
