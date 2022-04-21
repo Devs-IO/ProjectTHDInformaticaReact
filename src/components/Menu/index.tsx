@@ -1,20 +1,20 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHandHoldingUsd, FaBoxOpen } from 'react-icons/fa';
-import { IoPeopleOutline } from 'react-icons/io5';
 import { BsBoxArrowInLeft } from 'react-icons/bs';
+import { FaBoxOpen, FaHandHoldingUsd } from 'react-icons/fa';
+import { IoPeopleOutline } from 'react-icons/io5';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { Container, Nav } from './styles';
 import logo from 'assets/Menu/logo.svg';
 import Button from 'components/Button';
+import { Container, Nav } from './styles';
 
 const Menu = (props: any) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const listItems = [
+    { name: 'Vendas', path: '/sales', icon: <FaHandHoldingUsd /> },
     { name: 'Produtos', path: '/products', icon: <IoPeopleOutline /> },
     { name: 'Clientes', path: '/clients', icon: <FaBoxOpen /> },
-    { name: 'Vendas', path: '/sales', icon: <FaHandHoldingUsd /> },
   ];
 
   const hiddenMenuPages = ['/', '/home', '/register'];

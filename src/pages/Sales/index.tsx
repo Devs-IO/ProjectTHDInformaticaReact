@@ -2,7 +2,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
 
 import getValidationErrors from 'utils/getValidationErrors';
@@ -31,10 +31,12 @@ export const Sales = () => {
 
   return (
     <Container>
+      <Link to="/sales/new">
       <Button type="button">
         <RiFileEditLine />
         <span>Cadastrar Vendas</span>
       </Button>
+      </Link>
       <Header>Vendas</Header>
       <Content>
         <Form ref={formRef} onSubmit={handleLogin}>
