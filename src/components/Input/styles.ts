@@ -38,6 +38,7 @@ export const Container = styled.div<ContainerProps>`
   input {
     /* flex: 1; */
     background: transparent;
+    width: 100%;
     border: 0;
     color: #CCCCCC;
     &::placeholder {
