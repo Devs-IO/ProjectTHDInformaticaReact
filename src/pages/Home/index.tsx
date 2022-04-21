@@ -22,17 +22,6 @@ export const Home = () => {
   const handleLogin = useCallback(
     async (data: SignInFormData) => {
       try {
-        // formRef.current?.setErrors({});
-
-        // const schema = Yup.object().shape({
-        //   email: Yup.string().email('Digite um e-mail válido').required('E-mail obrigatório'),
-        //   password: Yup.string().required('Senha obrigatória'),
-        // });
-
-        // await schema.validate(data, {
-        //   abortEarly: false,
-        // });
-
         navigate('/sales');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {

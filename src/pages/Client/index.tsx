@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import Header from 'components/Header';
 import InputSearch from 'components/InputSearch';
 import Table from 'components/Table';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiFileEditLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import api from 'services/api';
@@ -17,12 +17,20 @@ export const Client = () => {
 
   const [data, setData] = useState([]);
 
+  const head = {
+    name: 'Nome',
+    phone: 'Telefone',
+    email: 'Email',
+    cpf: 'CPF',
+    city: 'Cidade',
+  };
+
   useEffect(() => {
     (async () => {
       const result = await api.get('/clients');
       setData(result.data);
     })();
-  }, []);
+  }, [data]);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -37,36 +45,14 @@ export const Client = () => {
     }
   }, []);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Clientes',
-        columns: [
-          {
-            Header: 'Nome',
-            accessor: 'name',
-          },
-          {
-            Header: 'Telefone',
-            accessor: 'phone',
-          },
-          {
-            Header: 'E-mail',
-            accessor: 'email',
-          },
-          {
-            Header: 'CPF',
-            accessor: 'cpf',
-          },
-          {
-            Header: 'Cidade',
-            accessor: 'city',
-          },
-        ],
-      },
-    ],
-    []
-  );
+  if (data.length === 0) {
+    return (
+      <Container>
+        <Header>Carregando os clientes</Header>
+        <hr />
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -81,8 +67,7 @@ export const Client = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Clientes" />
         </Form>
-
-        <Table columns={columns} data={data} />
+        {data.length > 0 && <Table data={data} head={head} />}
       </Content>
     </Container>
   );

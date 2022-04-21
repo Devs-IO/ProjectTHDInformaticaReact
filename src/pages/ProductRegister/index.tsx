@@ -120,7 +120,7 @@ export const ProductRegister = () => {
   return (
     <>
       <Container>
-        <Header>Novo Cliente</Header>
+        <Header>Novo Produto</Header>
         <Content>
           <Form ref={formRef} onSubmit={handleRegister}>
             <div>

@@ -1,46 +1,39 @@
-import { useTable } from 'react-table';
 import { Container } from './styles';
 
-export default function Table({ columns, data }: any) {
-  // Use the useTable Hook to send the columns and data to build the table
-  const {
-    getTableProps, // table props from react-table
-    getTableBodyProps, // table body props from react-table
-    headerGroups, // headerGroups, if your table has groupings
-    rows, // rows for the table based on the data passed
-    prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
-  } = useTable({
-    columns,
-    data,
-  });
+const Head = ({ keys, head }: any) => {
+  const tableHead = head || {};
+  return (
+    <thead>
+      <tr>
+        {keys.map((key: any) => (
+          <th key={key}>{tableHead[key] || key}</th>
+        ))}
+      </tr>
+    </thead>
+  );
+};
 
-  /* 
-    Render the UI for your table
-    - react-table doesn't have UI, it's headless. We just need to put the react-table props from the Hooks, and it will do its magic automatically
-  */
+const Row = ({ record }: any) => {
+  const keys = Object.keys(record);
+  return (
+    <tr key={record.id}>
+      {keys.map((key: string) => (
+        <td key={key}>{record[key]}</td>
+      ))}
+    </tr>
+  );
+};
+
+export default function Table({ data, head }: any) {
+  const keys = Object.keys(data[0]);
   return (
     <Container>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
+      <table>
+        <Head keys={keys} head={head} />
+        <tbody>
+          {data.map((record: any) => (
+            <Row record={record} />
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-                })}
-              </tr>
-            );
-          })}
         </tbody>
       </table>
     </Container>

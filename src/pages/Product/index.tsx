@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import Header from 'components/Header';
 import InputSearch from 'components/InputSearch';
 import Table from 'components/Table';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiFileEditLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import getValidationErrors from 'utils/getValidationErrors';
@@ -17,12 +17,21 @@ export const Product = () => {
 
   const [data, setData] = useState([]);
 
+  const head = {
+    code: 'Código',
+    name: 'Nome',
+    categories_name: 'Categoria',
+    providers_name: 'Fornecedor',
+    sell_price: 'Preço',
+    quantity: 'Quantidade',
+  };
+
   useEffect(() => {
     (async () => {
       const result = await api.get('/products');
       setData(result.data);
     })();
-  }, []);
+  }, [data]);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -37,48 +46,14 @@ export const Product = () => {
     }
   }, []);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Produtos',
-        columns: [
-          {
-            Header: 'Nome',
-            accessor: 'name',
-          },
-          {
-            Header: 'Categoria',
-            accessor: 'categories_name',
-          },
-          {
-            Header: 'Fornecedor',
-            accessor: 'providers_name',
-          },
-          {
-            Header: 'Preço de Venda',
-            accessor: 'sell_price',
-          },
-          {
-            Header: 'Preço de Compra',
-            accessor: 'buy_price',
-          },
-          {
-            Header: 'Quantidade',
-            accessor: 'quantity',
-          },
-          {
-            Header: 'Codigo',
-            accessor: 'code',
-          },
-          {
-            Header: 'Ações',
-            accessor: '<BsTrash />',
-          },
-        ],
-      },
-    ],
-    []
-  );
+  if (data.length === 0) {
+    return (
+      <Container>
+        <Header>Carregando os produtos</Header>
+        <hr />
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -93,7 +68,7 @@ export const Product = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
-        <Table columns={columns} data={data} />
+        {data.length > 0 && <Table data={data} head={head} />}
       </Content>
     </Container>
   );

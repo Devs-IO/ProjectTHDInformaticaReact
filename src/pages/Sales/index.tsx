@@ -1,20 +1,31 @@
-import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
-import { useCallback, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Form } from '@unform/web';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiFileEditLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+import api from 'services/api';
 
-import getValidationErrors from 'utils/getValidationErrors';
+import * as Yup from 'yup';
+
 import Button from 'components/Button';
 import Header from 'components/Header';
+import getValidationErrors from 'utils/getValidationErrors';
 
-import { Container, Content } from './styles';
 import InputSearch from 'components/InputSearch';
+import Table from 'components/Table';
+import { Container, Content } from './styles';
 
 export const Sales = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigate = useNavigate();
+
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    (async () => {
+      const result = await api.get('/sells');
+      setData(result.data);
+    })();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -32,16 +43,17 @@ export const Sales = () => {
   return (
     <Container>
       <Link to="/sales/new">
-      <Button type="button">
-        <RiFileEditLine />
-        <span>Cadastrar Vendas</span>
-      </Button>
+        <Button type="button">
+          <RiFileEditLine />
+          <span>Cadastrar Vendas</span>
+        </Button>
       </Link>
       <Header>Vendas</Header>
       <Content>
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Vendas" />
         </Form>
+        <Table data={data} />
       </Content>
     </Container>
   );

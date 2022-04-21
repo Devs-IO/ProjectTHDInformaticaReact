@@ -1,14 +1,14 @@
-import { ProductRegister } from 'pages/ProductRegister';
-import { Routes as Switch, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes as Switch } from 'react-router-dom';
 
-import { Home, Product, Register, Client, Sales, ClientRegister, SaleRegister } from '../pages';
+import { Client, ClientRegister, Home, Product, ProductRegister, Register, SaleRegister, Sales } from '../pages';
 
 export const Routes = () => {
   return (
     <Switch>
+      <Route path="*" element={<Navigate replace to="/home" />} />
+      <Route path="/" element={<Navigate replace to="/home" />} />
       <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
-      <Route path="*" element={<Navigate replace to="/home" />} />
       <Route path="/products" element={<Product />} />
       <Route path="/products/new" element={<ProductRegister />} />
       <Route path="/clients" element={<Client />} />
