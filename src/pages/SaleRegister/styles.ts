@@ -24,6 +24,20 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
 
-`;
+
+export const Content = styled.div`
+  padding: 0 30px;
+  margin: 32px auto;
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+    list-style: none;
+    
+    label {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }`;
