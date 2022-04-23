@@ -1,6 +1,5 @@
-import { BsBoxArrowInLeft } from 'react-icons/bs';
+import { BsBoxArrowInLeft, BsFillPeopleFill } from 'react-icons/bs';
 import { FaBoxOpen, FaHandHoldingUsd } from 'react-icons/fa';
-import { IoPeopleOutline } from 'react-icons/io5';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from 'assets/Menu/logo.svg';
@@ -13,7 +12,7 @@ const Menu = (props: any) => {
 
   const listItems = [
     { name: 'Vendas', path: '/sales', icon: <FaHandHoldingUsd /> },
-    { name: 'Produtos', path: '/products', icon: <IoPeopleOutline /> },
+    { name: 'Produtos', path: '/products', icon: <BsFillPeopleFill /> },
     { name: 'Clientes', path: '/clients', icon: <FaBoxOpen /> },
   ];
 

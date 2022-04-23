@@ -27,11 +27,13 @@ export const Product = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      const result = await api.get('/products');
+    const loadClient = async () => {
+      const result = await api.get(`/products/`);
       setData(result.data);
-    })();
-  }, [data]);
+    };
+
+    loadClient();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {

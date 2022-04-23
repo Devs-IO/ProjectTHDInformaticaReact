@@ -12,7 +12,6 @@ import Header from 'components/Header';
 import getValidationErrors from 'utils/getValidationErrors';
 
 import InputSearch from 'components/InputSearch';
-import Table from 'components/Table';
 import { Container, Content } from './styles';
 
 export const Sales = () => {
@@ -21,10 +20,12 @@ export const Sales = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    (async () => {
-      const result = await api.get('/sells');
+    const loadClient = async () => {
+      const result = await api.get(`/sells/`);
       setData(result.data);
-    })();
+    };
+
+    loadClient();
   }, []);
 
   const handleLogin = useCallback(async (data: any) => {
@@ -53,7 +54,7 @@ export const Sales = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Vendas" />
         </Form>
-        <Table data={data} />
+        {/* <Table data={data} /> */}
       </Content>
     </Container>
   );

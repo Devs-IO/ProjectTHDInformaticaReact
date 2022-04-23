@@ -13,6 +13,7 @@ export const Routes = () => {
       <Route path="/products/new" element={<ProductRegister />} />
       <Route path="/clients" element={<Client />} />
       <Route path="/clients/new" element={<ClientRegister />} />
+      <Route path="/clients/:id" element={<ClientRegister />} />
       <Route path="/sales" element={<Sales />} />
       <Route path="/sales/new" element={<SaleRegister />} />
     </Switch>

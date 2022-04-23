@@ -16,6 +16,14 @@ export const Container = styled.div`
       color: white;
     }
 
+    thead>tr>th:first-child {
+      display: none; // hide the first column
+    }
+
+    tbody>tr>td:first-child {
+      display: none; // hide the first column
+    }
+
     tbody {
         tr:nth-child(even) {
           background: #fff;
@@ -23,16 +31,24 @@ export const Container = styled.div`
         tr:nth-child(odd) {
           background: #f0f0f0;
         }
-  } 
+    } 
 
-  tr {
-    height: 48px;
-  }
+    tr {
+      height: 48px;
+    }
 
-  th,
-  td {
-    padding: 20px;
-  }
+    th,
+    td {
+      padding: 20px;
+    }
+
+    a {
+      padding: 10px;
+    }
+
+    button {
+      outline: none;
+    }
 
 
   }
