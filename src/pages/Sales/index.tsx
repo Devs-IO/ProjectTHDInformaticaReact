@@ -18,14 +18,14 @@ import { Container, Content } from './styles';
 export const Sales = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     (async () => {
       const result = await api.get('/sells');
       setData(result.data);
     })();
-  }, []);
+  }, [data]);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -40,6 +40,15 @@ export const Sales = () => {
     }
   }, []);
 
+  if (data.length === 0) {
+    return (
+      <Container>
+        <Header>Carregando os produtos</Header>
+        <hr />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <Link to="/sales/new">
@@ -53,7 +62,7 @@ export const Sales = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Vendas" />
         </Form>
-        <Table data={data} />
+        {data.length > 0 && <Table data={data}/>}
       </Content>
     </Container>
   );
