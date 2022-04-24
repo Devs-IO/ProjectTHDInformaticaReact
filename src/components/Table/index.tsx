@@ -1,5 +1,6 @@
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
+import { AiFillDelete, AiFillEdit, AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import api from '../../services/api';
 import { Container } from './styles';
 
 const Head = ({ keys, head }: any) => {
@@ -18,29 +19,34 @@ const Head = ({ keys, head }: any) => {
 
 const Row = ({ record, link }: any) => {
   const keys = Object.keys(record);
-  const navigate = useNavigate();
 
   const handleDelete = async (id: string) => {
-    //await api.delete(`/${link}/${id}`);
-    navigate(`/${link}`);
+    await api.put(`/${link}/uploadActive/${id}`);
+    window.location.reload();
   };
 
   return (
     <tr key={record.id}>
       {keys.map((key: string) => (
-        <td key={key}>{record[key]}</td>
+        <td key={key}>
+          {key === 'active' ? (
+            record[key] ? (
+              <AiOutlineCheckCircle size={20} color="#00ff00" />
+            ) : (
+              <AiOutlineCloseCircle size={20} color="#ff0000" />
+            )
+          ) : (
+            record[key]
+          )}
+        </td>
       ))}
-      <td>
+
+      <td key={record.id}>
         <Link to={'/' + link + '/' + record.id}>
           <AiFillEdit />
         </Link>
-        {/* <button
-          onClick={() => {
-            handleDelete(record.id);
-          }}
-        >*/}
-        <AiFillDelete />
-        {/*</button> */}
+
+        <AiFillDelete onClick={() => handleDelete(record.id)} />
       </td>
     </tr>
   );

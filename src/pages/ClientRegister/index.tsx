@@ -82,8 +82,8 @@ export const ClientRegister = () => {
         const schema = Yup.object().shape({
           email: Yup.string().email('Digite um e-mail válido').required('E-mail obrigatório'),
           name: Yup.string().required('Nome é obrigatório'),
-          phone: Yup.string().matches(phoneRegExp, 'Número de telefone inválido').required('Telefone é obrigatório'),
-          cpf: Yup.string().matches(cpfRegExp, 'Cpf Inválido').required('CPF é obrigatório'),
+          phone: Yup.string().required('Telefone é obrigatório'),
+          cpf: Yup.string().required('CPF é obrigatório'),
           city_id: Yup.string().required('Cidade é obrigatório'),
         });
 
@@ -191,6 +191,9 @@ export const ClientRegister = () => {
                 placeholder="Cidades"
                 isClearable
               />
+            </div>
+            <div>
+              <label>Cliente Ativo</label>
             </div>
             <Button type="submit">
               <BsFillCheckCircleFill />

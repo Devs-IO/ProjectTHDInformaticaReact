@@ -24,6 +24,7 @@ export const Client = () => {
     email: 'Email',
     cpf: 'CPF',
     city: 'Cidade',
+    active: 'Ativo',
   };
 
   useEffect(() => {
@@ -34,6 +35,8 @@ export const Client = () => {
 
     loadClient();
   }, []);
+
+  console.log(data);
 
   const handleLogin = useCallback(async (data: any) => {
     try {

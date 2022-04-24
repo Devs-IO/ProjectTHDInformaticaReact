@@ -43,11 +43,14 @@ export const Container = styled.div`
     }
 
     a {
-      padding: 10px;
+      padding: 5px;
+      text-decoration: none;
+      color: #09090a;
     }
 
-    button {
+    svg {
       outline: none;
+      cursor: pointer;
     }
 
 
