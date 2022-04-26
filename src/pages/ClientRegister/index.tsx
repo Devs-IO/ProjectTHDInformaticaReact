@@ -1,19 +1,19 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-
+import Button from 'components/Button';
+import Header from 'components/Header';
+import Input from 'components/Input';
+import Modal from 'components/Modal';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
+import { useNavigate, useParams } from 'react-router-dom';
+import Toggle from 'react-toggle';
+import 'react-toggle/style.css';
 import getValidationErrors from 'utils/getValidationErrors';
 import * as Yup from 'yup';
 import Select from '../../components/Select';
 import api from '../../services/api';
 import { Container, Content } from './styles';
-
-import Button from 'components/Button';
-import Header from 'components/Header';
-import Input from 'components/Input';
-import Modal from 'components/Modal';
-import { useNavigate, useParams } from 'react-router-dom';
 
 interface ClientsData {
   id: number;
@@ -22,6 +22,7 @@ interface ClientsData {
   phone: string;
   cpf: string;
   city_id: string;
+  active: boolean;
 }
 
 interface modalData {
@@ -41,8 +42,8 @@ export const ClientRegister = () => {
 
   const navigate = useNavigate();
 
-  const phoneRegExp = /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/;
-  const cpfRegExp = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
+  // const phoneRegExp = /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/;
+  // const cpfRegExp = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
 
   useEffect(() => {
     (async () => {
@@ -92,6 +93,10 @@ export const ClientRegister = () => {
         });
 
         if (isUpdate) {
+          console.log('ACTIVE', activeToggle);
+          data = { ...data, active: activeToggle };
+
+          console.log('UPDATE', data);
           await api
             .put(`/clients/${id}`, data)
             .then(() => {
@@ -148,12 +153,11 @@ export const ClientRegister = () => {
         }
       }
     },
-    [api, modal, navigate]
+    [id, isUpdate, navigate]
   );
 
   return (
     <>
-      {' '}
       <Container>
         <Header>Novo Cliente</Header>
         <Content>
@@ -192,9 +196,20 @@ export const ClientRegister = () => {
                 isClearable
               />
             </div>
-            <div>
-              <label>Cliente Ativo</label>
-            </div>
+            {isUpdate ? (
+              <div>
+                <label>Status Cliente</label>
+                <br />
+                <br />
+                <Toggle
+                  name="active"
+                  onChange={(ev) => console.log(ev.target.checked)}
+                  defaultChecked={client.active}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
             <Button type="submit">
               <BsFillCheckCircleFill />
               {isUpdate ? <span>Atualizar</span> : <span>Cadastrar</span>}
