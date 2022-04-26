@@ -39,6 +39,7 @@ export const ClientRegister = () => {
   const [modal, setModal] = useState<modalData>({} as modalData);
   const [client, setClient] = useState<ClientsData>({} as ClientsData);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [checkedToggle, setCheckedToggle] = useState(false);
 
   const navigate = useNavigate();
 
@@ -93,8 +94,8 @@ export const ClientRegister = () => {
         });
 
         if (isUpdate) {
-          console.log('ACTIVE', activeToggle);
-          data = { ...data, active: activeToggle };
+          console.log('ACTIVE', checkedToggle);
+          data = { ...data, active: checkedToggle };
 
           console.log('UPDATE', data);
           await api
@@ -153,8 +154,12 @@ export const ClientRegister = () => {
         }
       }
     },
-    [id, isUpdate, navigate]
+    [checkedToggle, id, isUpdate, navigate]
   );
+
+  const handleClick = (ev: any) => {
+    setCheckedToggle(ev.target.checked ? true : false);
+  };
 
   return (
     <>
@@ -187,12 +192,14 @@ export const ClientRegister = () => {
             </div>
             <div>
               <label>Cidade</label>
+              <br />
               <Select
                 name="city_id"
                 options={cities}
                 className="react-select-container"
                 classNamePrefix="react-select"
                 placeholder="Cidades"
+                // value={client.city_id}
                 isClearable
               />
             </div>
@@ -201,11 +208,7 @@ export const ClientRegister = () => {
                 <label>Status Cliente</label>
                 <br />
                 <br />
-                <Toggle
-                  name="active"
-                  onChange={(ev) => console.log(ev.target.checked)}
-                  defaultChecked={client.active}
-                />
+                <Toggle name="active" onChange={(ev: any) => handleClick(ev)} checked={client.active ? true : false} />
               </div>
             ) : (
               <></>
