@@ -12,24 +12,53 @@ import * as Yup from 'yup';
 import api from '../../services/api';
 import { Container, Content } from './styles';
 
+interface ProductData {
+  id: string;
+  code: string;
+  name: string;
+  categories_name: string;
+  providers_name: string;
+  sell_price: number;
+  quantity: number;
+  active: boolean;
+}
+
 export const Product = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ProductData[]>([]);
 
   const head = {
+    id: 'id',
     code: 'Código',
     name: 'Nome',
     categories_name: 'Categoria',
     providers_name: 'Fornecedor',
     sell_price: 'Preço',
     quantity: 'Quantidade',
+    active: 'Ativo',
   };
 
   useEffect(() => {
     const loadClient = async () => {
       const result = await api.get(`/products/`);
-      setData(result.data);
+
+      console.log(result.data);
+
+      // result.data.foreach((item: ProductData) => {
+      //   setData(
+      //     data.concat({
+      //       id: item.id,
+      //       code: item.code,
+      //       name: item.name,
+      //       categories_name: item.categories_name,
+      //       providers_name: item.providers_name,
+      //       sell_price: item.sell_price,
+      //       quantity: item.quantity,
+      //       active: item.active,
+      //     })
+      //   );
+      // });
     };
 
     loadClient();

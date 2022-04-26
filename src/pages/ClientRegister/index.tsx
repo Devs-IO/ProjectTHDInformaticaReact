@@ -64,6 +64,7 @@ export const ClientRegister = () => {
       const result = await api.get(`/clients/${id}`);
 
       setClient(result.data);
+      setCheckedToggle(result.data.active);
     };
 
     if (id) {
@@ -94,7 +95,6 @@ export const ClientRegister = () => {
         });
 
         if (isUpdate) {
-          console.log('ACTIVE', checkedToggle);
           data = { ...data, active: checkedToggle };
 
           console.log('UPDATE', data);
@@ -208,7 +208,7 @@ export const ClientRegister = () => {
                 <label>Status Cliente</label>
                 <br />
                 <br />
-                <Toggle name="active" onChange={(ev: any) => handleClick(ev)} checked={client.active ? true : false} />
+                <Toggle name="active" onChange={(ev: any) => handleClick(ev)} checked={checkedToggle} />
               </div>
             ) : (
               <></>
