@@ -1,9 +1,7 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import Input from 'components/Input';
-import Modal from 'components/Modal';
+import { Button, Header, Input, Modal, Select } from '../../components';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,7 +9,6 @@ import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 import getValidationErrors from 'utils/getValidationErrors';
 import * as Yup from 'yup';
-import Select from '../../components/Select';
 import api from '../../services/api';
 import { Container, Content } from './styles';
 

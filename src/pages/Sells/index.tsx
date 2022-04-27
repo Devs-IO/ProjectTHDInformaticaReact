@@ -7,14 +7,12 @@ import api from 'services/api';
 
 import * as Yup from 'yup';
 
-import Button from 'components/Button';
-import Header from 'components/Header';
 import getValidationErrors from 'utils/getValidationErrors';
+import { Button, Header, InputSearch } from '../../components';
 
-import InputSearch from 'components/InputSearch';
 import { Container, Content } from './styles';
 
-export const Sales = () => {
+export const Sells = () => {
   const formRef = useRef<FormHandles>(null);
 
   const [data, setData] = useState();

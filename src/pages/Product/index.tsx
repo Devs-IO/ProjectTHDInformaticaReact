@@ -1,9 +1,8 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import InputSearch from 'components/InputSearch';
-import Table from 'components/Table';
+
+import { Button, Header, InputSearch, Table } from '../../components';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiFileEditLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';

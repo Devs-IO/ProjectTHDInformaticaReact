@@ -1,6 +1,6 @@
+import { useField } from '@unform/core';
 import React, { InputHTMLAttributes, useEffect, useRef } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useField } from '@unform/core';
 
 import { Container } from './styles';
 
@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-const InputSearch: React.FC<InputProps> = ({ name, ...rest }) => {
+export const InputSearch: React.FC<InputProps> = ({ name, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { fieldName, defaultValue, registerField } = useField(name);
 
@@ -27,5 +27,3 @@ const InputSearch: React.FC<InputProps> = ({ name, ...rest }) => {
     </Container>
   );
 };
-
-export default InputSearch;

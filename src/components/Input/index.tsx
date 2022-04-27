@@ -11,7 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   mask?: 'cep' | 'currency' | 'cpf' | 'phone' | 'quantity';
 }
 
-const Input: React.FC<InputProps> = ({ name, icon: Icon, mask, ...rest }) => {
+export const Input: React.FC<InputProps> = ({ name, icon: Icon, mask, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -71,5 +71,3 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, mask, ...rest }) => {
     </Container>
   );
 };
-
-export default Input;

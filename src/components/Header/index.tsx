@@ -1,6 +1,6 @@
 import { Container } from './styles';
 
-const Header: React.FC<any> = ({ children, ...rest }) => {
+export const Header: React.FC<any> = ({ children, ...rest }) => {
   return (
     <Container>
       <span> | </span>
@@ -8,5 +8,3 @@ const Header: React.FC<any> = ({ children, ...rest }) => {
     </Container>
   );
 };
-
-export default Header;

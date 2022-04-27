@@ -1,10 +1,9 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Button from 'components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Button, Input } from '../../components';
 
-import Input from 'components/Input';
 import { useCallback, useRef } from 'react';
 import Line from '../../assets/Home/Line.svg';
 import { Container, Content } from '../../styles/home';
@@ -22,7 +21,7 @@ export const Home = () => {
   const handleLogin = useCallback(
     async (data: SignInFormData) => {
       try {
-        navigate('/sales');
+        navigate('/sells');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);

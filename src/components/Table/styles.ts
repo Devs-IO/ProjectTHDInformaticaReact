@@ -10,7 +10,9 @@ export const Container = styled.div`
     border-spacing: 0;
     border-radius: 5px 5px 0px 0px;
     font-size: 16px;
-
+    align-items: center;
+    text-align: center;
+    
     thead>tr {
       background: #2B4C7E;
       color: white;

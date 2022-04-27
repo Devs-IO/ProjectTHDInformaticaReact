@@ -52,7 +52,7 @@ const Row = ({ record, link }: any) => {
   );
 };
 
-export default function Table({ data, head, link }: any) {
+export function Table({ data, head, link }: any) {
   const keys = Object.keys(data[0]);
   return (
     <Container>

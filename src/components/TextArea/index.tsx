@@ -8,7 +8,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   icon?: React.ComponentType<IconBaseProps>;
 }
 
-const TextArea: React.FC<TextAreaProps> = ({ name, icon: Icon, ...rest }) => {
+export const TextArea: React.FC<TextAreaProps> = ({ name, icon: Icon, ...rest }) => {
   const TextAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -46,5 +46,3 @@ const TextArea: React.FC<TextAreaProps> = ({ name, icon: Icon, ...rest }) => {
     </Container>
   );
 };
-
-export default TextArea;

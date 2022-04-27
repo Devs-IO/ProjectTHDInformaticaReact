@@ -1,11 +1,7 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import Input from 'components/Input';
-import Modal from 'components/Modal';
-import Select from 'components/Select';
-import TextArea from 'components/TextArea';
+import { Button, Header, Input, Modal, Select, TextArea } from '../../components';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 import { useNavigate, useParams } from 'react-router-dom';

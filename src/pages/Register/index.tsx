@@ -1,14 +1,13 @@
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 import { useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import Line from '../../assets/Home/Line_invers.svg';
+import { Button, Input } from '../../components/';
 import { Container, Content } from '../../styles/home';
 import getValidationErrors from '../../utils/getValidationErrors';
-import Input from 'components/Input';
-import Button from 'components/Button';
-import Line from '../../assets/Home/Line_invers.svg';
 
 interface SignInFormData {
   email: string;

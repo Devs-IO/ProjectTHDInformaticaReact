@@ -25,7 +25,7 @@ interface ModalProps {
   text: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ closeModal, type, text }) => {
+export const Modal: React.FC<ModalProps> = ({ closeModal, type, text }) => {
   const types = {
     error: {
       image: iconError,
@@ -70,5 +70,3 @@ const Modal: React.FC<ModalProps> = ({ closeModal, type, text }) => {
     //   </Overlay>
   );
 };
-
-export default Modal;
