@@ -36,8 +36,6 @@ export const Client = () => {
     loadClient();
   }, []);
 
-  console.log(data);
-
   const handleLogin = useCallback(async (data: any) => {
     try {
     } catch (err) {

@@ -43,22 +43,18 @@ export const Product = () => {
     const loadClient = async () => {
       const result = await api.get(`/products/`);
 
-      console.log(result.data);
+      const product = result.data.map((item: ProductData) => ({
+        id: item.id,
+        code: item.code,
+        name: item.name,
+        categories_name: item.categories_name,
+        providers_name: item.providers_name,
+        sell_price: item.sell_price,
+        quantity: item.quantity,
+        active: item.active,
+      }));
 
-      // result.data.foreach((item: ProductData) => {
-      //   setData(
-      //     data.concat({
-      //       id: item.id,
-      //       code: item.code,
-      //       name: item.name,
-      //       categories_name: item.categories_name,
-      //       providers_name: item.providers_name,
-      //       sell_price: item.sell_price,
-      //       quantity: item.quantity,
-      //       active: item.active,
-      //     })
-      //   );
-      // });
+      setData(product);
     };
 
     loadClient();
@@ -99,7 +95,7 @@ export const Product = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
-        {data.length > 0 && <Table data={data} head={head} />}
+        {data.length > 0 && <Table data={data} head={head} link="products" />}
       </Content>
     </Container>
   );

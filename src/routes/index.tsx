@@ -11,6 +11,7 @@ export const Routes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/products" element={<Product />} />
       <Route path="/products/new" element={<ProductRegister />} />
+      <Route path="/products/:id" element={<ProductRegister />} />
       <Route path="/clients" element={<Client />} />
       <Route path="/clients/new" element={<ClientRegister />} />
       <Route path="/clients/:id" element={<ClientRegister />} />
