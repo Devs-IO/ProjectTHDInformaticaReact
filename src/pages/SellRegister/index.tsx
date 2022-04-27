@@ -4,12 +4,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { Header, Input, Select } from '../../components';
+import { Button, Header, Input, Select } from '../../components';
 
 import getValidationErrors from 'utils/getValidationErrors';
 
 import api from '../../services/api';
 import { Container, Content } from './styles';
+import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 
 export const SellRegister = () => {
   const formRef = useRef<FormHandles>(null);
@@ -106,6 +107,14 @@ export const SellRegister = () => {
             <label>Codígo</label>
             <Input name="code_id" disabled />
           </div>
+            <Button type="submit">
+            <BsFillCheckCircleFill />
+            <span>Salvar</span>
+            </Button>
+            <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/sales/new')}>
+            <BsFillXCircleFill />
+              <span>Cancelar</span>
+            </Button>
         </Form>
       </Content>
     </Container>

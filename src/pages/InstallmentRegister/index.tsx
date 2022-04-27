@@ -6,13 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { RiFileEditLine } from 'react-icons/ri';
 
 import getValidationErrors from 'utils/getValidationErrors';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import Select from 'components/Select';
-import Input from 'components/Input';
+import { Button, Header, Select, Input, InputSearch } from '../../components';
 
 import { Container, Content } from './styles';
-import InputSearch from 'components/InputSearch';
 import api from "../../services/api";
 import { isDisabled } from '@testing-library/user-event/dist/utils';
 import { totalmem } from 'os';
