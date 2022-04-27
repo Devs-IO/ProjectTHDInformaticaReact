@@ -1,46 +1,155 @@
-# Getting Started with Create React App
+![thdInformatica](https://thdinformaticaweb.herokuapp.com/static/media/logo.35fb0c7ced4282de9535c9cf9b30dc5c.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>Project THDInformatica ReactJS</h1>
 
-## Available Scripts
+  <p align="center">
+    <a href="https://yarnpkg.com/"><img alt="Yarn" src="https://github.com/yarnpkg/assets/blob/master/yarn-kitten-full.png?raw=true" width="80"></a>
+    <a href="https://pt-br.reactjs.org/"><img alt="REACTJS" src="https://avatars.githubusercontent.com/u/9950313?s=200&v=4" width="80"></a>
+    <a href="typescriptlang.org/"><img alt="typescript" src="https://www.datocms-assets.com/48401/1627663113-learn-typescript.png?fit=max&fm=webp&w=900" width="80"></a>
+  </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/static/v1?label=Heroku&message=deploy&color=blue&style=for-the-badge&logo=heroku"/>
+    <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/>
 
-In the project directory, you can run:
+    <img src="http://img.shields.io/static/v1?label=TESTES&message=%3E100&color=GREEN&style=for-the-badge"/>
+    <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge"/>
+  </p>
 
-### `npm start`
+<h4 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h4>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tópicos :triangular_flag_on_post:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:small_blue_diamond: [Descrição do projeto](#descrição-do-projeto-bookmark_tabs)
 
-### `npm test`
+:small_blue_diamond: [Funcionalidades do projeto](#funcionalidades-do-projeto-hammer)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+:small_blue_diamond: [Deploy da Aplicação](#deploy-da-aplicação-rocket)
 
-### `npm run build`
+:small_blue_diamond: [Pré-requisitos](#pré-requisitos-wrench)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+:small_blue_diamond: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+:small_blue_diamond: [ER Diagram](#er-diagram-floppy_disk)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+:small_blue_diamond: [Configurando banco de dados](#configurando-banco-de-dados-bank)
 
-### `npm run eject`
+:small_blue_diamond: [Linguagens, dependencias e libs utilizadas](#linguagens-dependencias-e-libs-utilizadas-books)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+:small_blue_diamond: [Tarefas em aberto](#tarefas-em-aberto-pencil)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+:small_blue_diamond: [Desenvolvedores](#desenvolvedores-octocat)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Descrição do projeto :bookmark_tabs:
+
+<p align="justify">
+  Front-end do projeto THDInformática.
+  O Projeto consiste em um controle para o usuário, onde ocorre o CRUD de clientes, CRUD de produtos e
+    controle de vendas efetuadas (para qual cliente/produtos comprados e status de pagamento).
+  O back foi criado utilizando o Nodejs, com o typeorm, banco de dados relacional em postgres.
+</p>
+
+
+
+
+
+## Funcionalidades do projeto :hammer:
+
+:heavy_check_mark: Menu para Listagem de Produtos
+
+:heavy_check_mark: Botão para Cadastro de Produtos
+
+:heavy_check_mark: Menu para Listagem de Clientes
+
+:heavy_check_mark: Botão para Cadastro de Clientes
+
+:heavy_check_mark: Menu para Listagem de Vendas
+
+:heavy_check_mark: Botão para Cadastro de Vendas
+
+
+
+## Deploy da Aplicação :rocket:
+
+> Link do deploy da aplicação do Front-end: https://thdinformaticaweb.herokuapp.com/home
+
+> Link do deploy da aplicação do Back-end: https://thdinformatica.herokuapp.com/
+
+
+
+## Pré-requisitos :wrench:
+
+
+:warning: [Node](https://nodejs.org/en/download/) <br />
+:warning: [YARN](https://yarnpkg.com/)
+
+
+
+## Como rodar a aplicação :arrow_forward:
+
+No terminal, clone o projeto:
+
+```
+git clone https://github.com/Devs-IO/ProjectTHDInformaticaReact.git
+```
+
+Execute o yarn para instalar as dependências
+
+```
+yarn
+```
+
+Por fim, só iniciar o projeto.
+
+```
+yarn run dev
+```
+
+
+## Linguagens, dependencias e libs utilizadas :books:
+
+- [ReactJS](pt-br.reactjs.org)
+
+
+
+## Tarefas em aberto :pencil:
+
+:memo: Edição e deleção de Produtos
+
+:memo: Edição e deleção de Clientes
+
+:memo: Edição e deleção de Vendas
+
+:memo: Atualização de Quantidade de produtos ao efetuar uma venda
+
+:memo: Filtro nas telas de pesquisas de Produtos, clientes e vendas
+
+:memo: Filtro nas telas de pesquisas de Produtos, clientes e vendas
+
+:memo: Autenticação de login
+
+:memo: Criação de usuário
+
+
+
+## Desenvolvedores :octocat:
+
+
+| [<img src="https://avatars.githubusercontent.com/u/38442994?v=4" width=115><br><sub>Rebeca Nonato</sub>](https://github.com/rebecanonato89) |  [<img src="https://avatars.githubusercontent.com/u/81541137?v=4" width=115><br><sub>Gustavo Lopes</sub>](https://github.com/Gustavolopes03) |  [<img src="https://avatars.githubusercontent.com/u/83866481?v=4" width=115><br><sub>Wendell Oliver</sub>](https://github.com/WendellOliver) |
+| :---: | :---: | :---: |
+
+
+
+
+## Licença :abc:
+
+The [MIT License]() (MIT)
+
+Copyright :copyright: 2022 - TDHInformatica
