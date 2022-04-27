@@ -70,6 +70,12 @@
 :heavy_check_mark: Botão para Cadastro de Vendas
 
 
+![THD Inforcell - Google Chrome.jpg](./public/THD Inforcell - Google Chrome.jpg)
+
+![THD Inforcell - Listagem.jpg](./public/THD Inforcell Listagem.jpg)
+
+![THD Inforcell - Edição.jpg](./public/THD Inforcell - Edição.jpg)
+
 
 ## Deploy da Aplicação :rocket:
 
