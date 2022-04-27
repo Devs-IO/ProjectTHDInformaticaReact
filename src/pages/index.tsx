@@ -6,3 +6,4 @@ export * from './ProductRegister';
 export * from './Register';
 export * from './SaleRegister';
 export * from './Sales';
+export * from './InstallmentRegister';

@@ -18,7 +18,7 @@ import { isDisabled } from '@testing-library/user-event/dist/utils';
 import { totalmem } from 'os';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 
-export const SaleRegister = () => {
+export const InstallmentRegister = () => {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const [client, setClients] = useState([]);
@@ -69,63 +69,36 @@ export const SaleRegister = () => {
       <Content>
         <Form ref={formRef} onSubmit={handleLogin}>
           <div>
-            <label>Nome</label>
-            <Select
-              name="client_id"
-              options={client}
-              placeholder="Escolha um Cliente"
-              isClearable
-              required
-            />
-          </div>
-          <div>
-            <label>Produtos</label>
-            <Select
-              name="product_id"
-              options={product}
-              placeholder="Escolha um Produto"
-              isClearable
-              required
-            />
-            </div>
-            <div>
-              <label>Formas de Pagamento</label>
+            <label>Forma de Pagamento</label>
             <Select
               name="paymentform_id"
               placeholder="Forma de Pagamento"
               isClearable
               required
             />
-            </div>
-            <div>
-              <label>Telefone</label>
-              <Input
-              name="phone_id"
-              disabled
-              required
-              />
-            </div>
-            <div>
-              <label>Cidade</label>
-              <Input
-              name="city_id"
-              disabled
-              required
-              />
-            </div>
-            <div>
-              <label>Meios de Pagamento</label>
-              <Select
+          </div>
+          <div>
+            <label>Meio de Pagamento</label>
+            <Select
               name="paymentmeans_id"
-              placeholder="Meio de Pagamento"
+              placeholder="Escolha um Produto"
               isClearable
               required
-              />
+            />
             </div>
             <div>
-              <label>Lista de Produtos</label>
+              <label>Quantidade de Parcelas</label>
+            <Select
+              name="paymentform_id"
+              placeholder="Escolha o n° de Parcelas"
+              isClearable
+              required
+            />
+            </div>
+            <div>
+              <label>Lista de Parcelas</label>
               <Input
-              name="productlist_id"
+              name="installmentlist_id"
               disabled 
               />
             </div>
@@ -142,7 +115,6 @@ export const SaleRegister = () => {
               <Input
               name="totalprice_id"
               placeholder="R$00.00"
-              color="#CCCCCC"
               disabled
               />
             </div>
@@ -173,7 +145,7 @@ export const SaleRegister = () => {
             <BsFillCheckCircleFill />
             <span>Salvar</span>
             </Button>
-            <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/sales')}>
+            <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/sales/new')}>
             <BsFillXCircleFill />
               <span>Cancelar</span>
             </Button>
