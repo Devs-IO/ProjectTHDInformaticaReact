@@ -247,7 +247,7 @@ export const ProductRegister = () => {
               <BsFillCheckCircleFill />
               {isUpdate ? <span>Atualizar</span> : <span>Cadastrar</span>}
             </Button>
-            <Button type="submit" color="#9C1524" className="button_cancel">
+            <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/products')}>
               <BsFillXCircleFill />
               <span>Cancelar</span>
             </Button>

@@ -21,8 +21,17 @@ const Row = ({ record, link }: any) => {
   const keys = Object.keys(record);
 
   const handleDelete = async (id: string) => {
-    await api.put(`/${link}/uploadActive/${id}`);
-    window.location.reload();
+    if (link === 'sells') {
+      if (window.confirm('Deseja realmente excluir esta venda?')) {
+        await api.delete(`/sells/${id}`);
+        window.location.reload();
+      }
+    } else {
+      if (window.confirm('Deseja realmente desativar este registro?')) {
+        await api.put(`/${link}/uploadActive/${id}`);
+        window.location.reload();
+      }
+    }
   };
 
   return (
@@ -33,7 +42,7 @@ const Row = ({ record, link }: any) => {
             record[key] ? (
               <AiOutlineCheckCircle size={20} color="#00ff00" />
             ) : (
-              <AiOutlineCloseCircle size={20} color="#ff0000" />
+              <AiOutlineCloseCircle size={20} color="#9C1524" />
             )
           ) : (
             record[key]
@@ -43,10 +52,10 @@ const Row = ({ record, link }: any) => {
 
       <td key={record.id}>
         <Link to={'/' + link + '/' + record.id}>
-          <AiFillEdit />
+          <AiFillEdit size={20} color="#0D3C84" />
         </Link>
 
-        <AiFillDelete onClick={() => handleDelete(record.id)} />
+        <AiFillDelete size={20} color="#9C1524" onClick={() => handleDelete(record.id)} />
       </td>
     </tr>
   );
