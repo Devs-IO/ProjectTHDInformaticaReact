@@ -1,9 +1,7 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import Button from 'components/Button';
-import Header from 'components/Header';
-import InputSearch from 'components/InputSearch';
-import Table from 'components/Table';
+import { Button, Header, InputSearch, Table } from '../../components';
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { RiFileEditLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
@@ -18,19 +16,23 @@ export const Client = () => {
   const [data, setData] = useState([]);
 
   const head = {
+    id: 'id',
     name: 'Nome',
     phone: 'Telefone',
     email: 'Email',
     cpf: 'CPF',
     city: 'Cidade',
+    active: 'Ativo',
   };
 
   useEffect(() => {
-    (async () => {
-      const result = await api.get('/clients');
+    const loadClient = async () => {
+      const result = await api.get(`/clients/`);
       setData(result.data);
-    })();
-  }, [data]);
+    };
+
+    loadClient();
+  }, []);
 
   const handleLogin = useCallback(async (data: any) => {
     try {
@@ -67,7 +69,7 @@ export const Client = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <InputSearch name="search" placeholder="Buscar Clientes" />
         </Form>
-        {data.length > 0 && <Table data={data} head={head} />}
+        {data.length > 0 && <Table data={data} head={head} link="clients" />}
       </Content>
     </Container>
   );

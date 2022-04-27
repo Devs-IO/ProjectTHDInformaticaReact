@@ -1,7 +1,7 @@
-import { Routes } from './routes';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Menu } from './components';
+import { Routes } from './routes';
 import GlobalStyle, { Container } from './styles/globals';
-import Menu from 'components/Menu';
 
 export const App = () => {
   return (
