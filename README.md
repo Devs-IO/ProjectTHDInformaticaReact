@@ -73,6 +73,8 @@
 
 :heavy_check_mark: Edição e deleção de Clientes
 
+:heavy_check_mark: Edição e deleção de Vendas
+
 
 ![THDInforcelltela](./public/tela.png)
 
@@ -125,12 +127,6 @@ yarn run dev
 
 
 ## Tarefas em aberto :pencil:
-
-:memo: Edição e deleção de Produtos
-
-:memo: Edição e deleção de Clientes
-
-:memo: Edição e deleção de Vendas
 
 :memo: Atualização de Quantidade de produtos ao efetuar uma venda
 
