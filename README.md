@@ -69,6 +69,10 @@
 
 :heavy_check_mark: Botão para Cadastro de Vendas
 
+:heavy_check_mark: Edição e deleção de Produtos
+
+:heavy_check_mark: Edição e deleção de Clientes
+
 
 ![THDInforcelltela](./public/tela.png)
 
