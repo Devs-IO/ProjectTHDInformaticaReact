@@ -18,7 +18,10 @@ interface ClientsData {
   email: string;
   phone: string;
   cpf: string;
-  city_id: string;
+  city: {
+    value: number;
+    label: string;
+  };
   active: boolean;
 }
 
@@ -161,7 +164,7 @@ export const ClientRegister = () => {
   return (
     <>
       <Container>
-        <Header>Novo Cliente</Header>
+        {isUpdate ? <Header>Atualizando Cliente</Header> : <Header>Novo Cliente</Header>}
         <Content>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <div>
@@ -196,7 +199,7 @@ export const ClientRegister = () => {
                 className="react-select-container"
                 classNamePrefix="react-select"
                 placeholder="Cidades"
-                // value={client.city_id}
+                defaultValue={client.city}
                 isClearable
               />
             </div>
