@@ -47,15 +47,6 @@ export const Client = () => {
     }
   }, []);
 
-  if (data.length === 0) {
-    return (
-      <Container>
-        <Header>Carregando os clientes</Header>
-        <hr />
-      </Container>
-    );
-  }
-
   return (
     <Container>
       <Link to="/clients/new">
@@ -70,6 +61,7 @@ export const Client = () => {
           <InputSearch name="search" placeholder="Buscar Clientes" />
         </Form>
         {data.length > 0 && <Table data={data} head={head} link="clients" />}
+        {data.length === 0 && <p> Não há clientes a serem exibidos!</p>}
       </Content>
     </Container>
   );

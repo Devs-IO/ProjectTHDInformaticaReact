@@ -18,7 +18,10 @@ interface ClientsData {
   email: string;
   phone: string;
   cpf: string;
-  city_id: string;
+  city: {
+    value: number;
+    label: string;
+  };
   active: boolean;
 }
 
@@ -154,6 +157,10 @@ export const ClientRegister = () => {
     [checkedToggle, id, isUpdate, navigate]
   );
 
+  const handleSelect = useCallback((selectedCity) => {
+    setClient(prev => ({...prev, city: selectedCity}));
+  }, []);
+
   const handleClick = (ev: any) => {
     setCheckedToggle(ev.target.checked ? true : false);
   };
@@ -161,7 +168,7 @@ export const ClientRegister = () => {
   return (
     <>
       <Container>
-        <Header>Novo Cliente</Header>
+        {isUpdate ? <Header>Atualizando Cliente</Header> : <Header>Novo Cliente</Header>}
         <Content>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <div>
@@ -193,10 +200,11 @@ export const ClientRegister = () => {
               <Select
                 name="city_id"
                 options={cities}
+                value={client.city}
+                onChange={handleSelect}
                 className="react-select-container"
                 classNamePrefix="react-select"
                 placeholder="Cidades"
-                // value={client.city_id}
                 isClearable
               />
             </div>
