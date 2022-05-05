@@ -170,7 +170,7 @@ export const ProductRegister = () => {
   return (
     <>
       <Container>
-        {isUpdate ? <Header>Atualizando Produto</Header> : <Header>Novo Produto</Header>}
+        <Header>Novo Produto</Header>
         <Content>
           <Form ref={formRef} onSubmit={handleRegister}>
             <div>

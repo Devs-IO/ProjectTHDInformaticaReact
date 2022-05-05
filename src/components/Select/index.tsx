@@ -7,10 +7,11 @@ interface PropsSelect extends SelectProps<OptionTypeBase> {
   name: string;
 }
 
-export const Select: React.FC<PropsSelect> = ({ 
-  name, 
-  ...rest 
-}: PropsSelect) => {
+type ComponentProps = PropsSelect;
+
+export const Select: React.FC<ComponentProps> = (props) => {
+  const { name, value, ...rest } = props as PropsSelect;
+
   const selectRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
