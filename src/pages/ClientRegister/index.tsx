@@ -19,9 +19,10 @@ interface ClientsData {
   phone: string;
   cpf: string;
   city: {
-    value: number;
+    value: string;
     label: string;
   };
+  city_id: string;
   active: boolean;
 }
 
@@ -97,7 +98,6 @@ export const ClientRegister = () => {
         if (isUpdate) {
           data = { ...data, active: checkedToggle };
 
-          console.log('UPDATE', data);
           await api
             .put(`/clients/${id}`, data)
             .then(() => {
@@ -158,7 +158,7 @@ export const ClientRegister = () => {
   );
 
   const handleSelect = useCallback((selectedCity) => {
-    setClient(prev => ({...prev, city: selectedCity}));
+    setClient((prev) => ({ ...prev, city: selectedCity }));
   }, []);
 
   const handleClick = (ev: any) => {

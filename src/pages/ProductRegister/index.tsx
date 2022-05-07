@@ -19,7 +19,15 @@ interface ProductsData {
   description: string;
   quantity: string;
   code: string;
+  provider: {
+    value: string;
+    label: string;
+  };
   provider_id: string;
+  category: {
+    value: string;
+    label: string;
+  };
   category_id: string;
   active: boolean;
 }
@@ -78,8 +86,6 @@ export const ProductRegister = () => {
       loadProduct();
     }
   }, [id]);
-
-  console.log(product);
 
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
@@ -167,6 +173,15 @@ export const ProductRegister = () => {
     setCheckedToggle(ev.target.checked ? true : false);
   };
 
+  const handleSelectCategory = useCallback((selectedCategory) => {
+    setProduct((prev) => ({ ...prev, category: selectedCategory }));
+  }, []);
+
+  const handleSelectProvider = useCallback((selectedProvider) => {
+    console.log('selectedProvider', selectedProvider);
+    setProduct((prev) => ({ ...prev, provider: selectedProvider }));
+  }, []);
+
   return (
     <>
       <Container>
@@ -179,7 +194,13 @@ export const ProductRegister = () => {
             </div>
             <div>
               <label>Tipo</label>
-              <Select name="category_id" placeholder="Categorias" options={categories} />
+              <Select
+                name="category_id"
+                placeholder="Categorias"
+                options={categories}
+                value={product.category}
+                onChange={handleSelectCategory}
+              />
             </div>
             <div style={{ display: 'flex' }}>
               <RegisterDiv>
@@ -209,7 +230,13 @@ export const ProductRegister = () => {
             </div>
             <div>
               <label>Fornecedor</label>
-              <Select name="provider_id" placeholder="Fornecedor" options={providers} />
+              <Select
+                name="provider_id"
+                placeholder="Fornecedor"
+                options={providers}
+                value={product.provider}
+                onChange={handleSelectProvider}
+              />
             </div>
             <div>
               <label>Descrição</label>
