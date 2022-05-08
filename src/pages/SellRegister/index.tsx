@@ -61,51 +61,104 @@ export const SellRegister = () => {
         <Form ref={formRef} onSubmit={handleLogin}>
           <div>
             <label>Nome</label>
-            <Select name="client_id" options={client} placeholder="Escolha um Cliente" isClearable required />
+            <Select 
+            name="client_id" 
+            options={client} 
+            placeholder="Escolha um Cliente" 
+            isClearable 
+            required 
+            />
           </div>
           <div>
             <label>Produtos</label>
-            <Select name="product_id" options={product} placeholder="Escolha um Produto" isClearable required />
+            <Select 
+            name="product_id" 
+            options={product} 
+            placeholder="Escolha um Produto" 
+            isClearable 
+            required 
+            />
           </div>
           <div>
             <label>Formas de Pagamento</label>
-            <Select name="paymentform_id" placeholder="Forma de Pagamento" isClearable required />
+            <Select 
+            name="paymentform_id" 
+            placeholder="Forma de Pagamento" 
+            isClearable 
+            required 
+            />
           </div>
           <div>
             <label>Telefone</label>
-            <Input name="phone_id" disabled required />
+            <Input 
+            className="disabled_input" 
+            name="phone_id" 
+            disabled 
+            required 
+            />
           </div>
           <div>
             <label>Cidade</label>
-            <Input name="city_id" disabled required />
+            <Input 
+            name="city_id" 
+            disabled 
+            required 
+            />
           </div>
           <div>
             <label>Meios de Pagamento</label>
-            <Select name="paymentmeans_id" placeholder="Meio de Pagamento" isClearable required />
+            <Select 
+            name="paymentmeans_id" 
+            placeholder="Meio de Pagamento" 
+            isClearable 
+            required 
+            />
           </div>
           <div>
             <label>Lista de Produtos</label>
-            <Input name="productlist_id" disabled />
+            <Input 
+            name="productlist_id" 
+            disabled
+             />
           </div>
           <div>
             <label>Desconto</label>
-            <Input name="discount_id" placeholder="Desconto" type="text" />
+            <Input 
+            name="discount_id" 
+            placeholder="Desconto" 
+            type="text" 
+            />
           </div>
           <div>
             <label>Preço Total</label>
-            <Input name="totalprice_id" placeholder="R$00.00" disabled />
+            <Input 
+            name="totalprice_id" 
+            placeholder="R$00.00" 
+            disabled 
+            />
           </div>
           <div>
             <label>Status do Pedido</label>
-            <Select name="orderstatus_id" placeholder="Escolha o status do pedido" required />
+            <Select 
+            name="orderstatus_id" 
+            placeholder="Escolha o status do pedido" 
+            required 
+            />
           </div>
           <div>
             <label>Data de Venda</label>
-            <Input name="selldate_id" placeholder="Data da Venda" disabled />
+            <Input 
+            name="selldate_id" 
+            placeholder="Data da Venda" 
+            disabled 
+            />
           </div>
           <div>
             <label>Codígo</label>
-            <Input name="code_id" disabled />
+            <Input 
+            name="code_id" 
+            disabled 
+            />
           </div>
             <Button type="submit">
             <BsFillCheckCircleFill />
