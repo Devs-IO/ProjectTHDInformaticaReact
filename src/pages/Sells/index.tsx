@@ -86,6 +86,15 @@ export const Sells = () => {
     }
   }, []);
 
+  if (data.length === 0) {
+    return (
+      <Container>
+        <Header>Carregando os Vendas</Header>
+        <hr />
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <Link to="/sells/new">
@@ -100,7 +109,6 @@ export const Sells = () => {
           <InputSearch name="search" placeholder="Buscar Vendas" />
         </Form>
         {data.length > 0 && <Table data={data} head={head} link="sells" />}
-        {data.length === 0 && <p> Não há vendas a serem exibidos!</p>}
       </Content>
     </Container>
   );
