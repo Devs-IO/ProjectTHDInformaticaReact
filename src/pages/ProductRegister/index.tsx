@@ -185,7 +185,7 @@ export const ProductRegister = () => {
   return (
     <>
       <Container>
-        {isUpdate ? <Header>Atualizando Produto</Header> : <Header>Novo Produto</Header>}
+        <Header>Novo Produto</Header>
         <Content>
           <Form ref={formRef} onSubmit={handleRegister}>
             <div>
@@ -254,22 +254,22 @@ export const ProductRegister = () => {
                   defaultValue={product.quantity}
                 />
               </RegisterDiv>
-              <div style={{ width: '14.5vw' }}>
+              <RegisterDiv>
                 <label>Código</label>
                 <Input name="code" placeholder="" defaultValue={product.code} />
-              </div>
-            </div>
+              </RegisterDiv>
 
-            {isUpdate ? (
-              <div>
-                <label>Status Cliente</label>
-                <br />
-                <br />
-                <Toggle name="active" onChange={(ev: any) => handleClick(ev)} checked={checkedToggle} />
-              </div>
-            ) : (
-              <></>
-            )}
+              {isUpdate ? (
+                <div>
+                  <label>Status Cliente</label>
+                  <br />
+                  <br />
+                  <Toggle name="active" onChange={(ev: any) => handleClick(ev)} checked={checkedToggle} />
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
             <Button type="submit">
               <BsFillCheckCircleFill />
               {isUpdate ? <span>Atualizar</span> : <span>Cadastrar</span>}

@@ -158,7 +158,7 @@ export const ClientRegister = () => {
   );
 
   const handleSelect = useCallback((selectedCity) => {
-    setClient((prev) => ({ ...prev, city: selectedCity }));
+    setClient(prev => ({...prev, city: selectedCity}));
   }, []);
 
   const handleClick = (ev: any) => {
@@ -168,7 +168,7 @@ export const ClientRegister = () => {
   return (
     <>
       <Container>
-        {isUpdate ? <Header>Atualizando Cliente</Header> : <Header>Novo Cliente</Header>}
+        <Header>Novo Cliente</Header>
         <Content>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <div>

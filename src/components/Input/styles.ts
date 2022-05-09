@@ -16,9 +16,11 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   margin-top: 8px;
   align-items: center;
+
   & + div {
     margin-top: 8px;
   }
+  
   ${(props) =>
     props.isErrored &&
     css`
@@ -35,6 +37,7 @@ export const Container = styled.div<ContainerProps>`
     css`
       color: #0D3C84;
     `}
+
   input {
     /* flex: 1; */
     background: transparent;
