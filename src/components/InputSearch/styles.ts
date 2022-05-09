@@ -5,9 +5,13 @@ export const Container = styled.div`
   background: #ffffff;
   border-radius: 10px;
   border: 2px solid #ffffff;
-  padding: 12px;
-  width: 80%;
+  padding: 10px;
+  width: 98%;
+
+  margin-left: 15px;
+
   color: #09090A;
+  margin-top: 8px;
   display: flex;
   align-items: center;
 
@@ -25,6 +29,6 @@ export const Container = styled.div`
     }
   }
   svg {
-    margin-right: 10px;
+    margin-right: 16px;
   }
 `;

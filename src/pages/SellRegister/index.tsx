@@ -12,11 +12,19 @@ import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
 import api from '../../services/api';
 import { Container, Content, RegisterDiv } from './styles';
 
+interface ClientsData {
+  value: string;
+  label: string;
+  phone: string;
+  city: string;
+}
+
 export const SellRegister = () => {
 
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
-  const [client, setClients] = useState([]);
+  const [clients, setClients] = useState<ClientsData[]>([]);
+  const [client, setClient] = useState<ClientsData>();
   const [product, setProducts] = useState([]);
   const [status, setStatus] = useState([]);
   const [payment, setPayment] = useState([]);
@@ -25,6 +33,18 @@ export const SellRegister = () => {
   const today = new Date(timeElapsed);
   const dateNow = today.toLocaleDateString();
 
+  const paymentOptions = [
+    {
+      value: '1',
+      label: 'À vista',
+    },
+    {
+      value: '2',
+      label: 'Parcelado',
+    },
+  ];
+
+
   useEffect(() => {
     (async () => {
       const clientResult = await api.get(`/clients/active`);
@@ -32,6 +52,8 @@ export const SellRegister = () => {
       const clientData = clientResult.data.map((c: any) => ({
         value: c.id,
         label: c.name,
+        phone: c.phone,
+        city: c.city,
       }));
 
       setClients(clientData);
@@ -81,6 +103,10 @@ export const SellRegister = () => {
     }
   }, []);
 
+  const handleSelectClient = useCallback((selectedClient) => {
+    setClient(selectedClient);
+  }, []);
+
   return (
     <Container>
       <Header>Cadastro de Vendas</Header>
@@ -90,7 +116,8 @@ export const SellRegister = () => {
             <label>Nome</label>
             <Select 
               name="client_id" 
-              options={client} 
+              options={clients} 
+              onChange={handleSelectClient}
               placeholder="Escolha um Cliente" 
               isClearable 
               required 
@@ -99,7 +126,8 @@ export const SellRegister = () => {
           <div className='disabled'>
             <label>Telefone</label>
             <Input 
-              className="disabled_input" 
+              className="disabled_input"
+              defaultValue={client?.phone}
               name="phone" 
               disabled
             />
@@ -107,7 +135,8 @@ export const SellRegister = () => {
           <div className='disabled'>
             <label>Cidade</label>
             <Input 
-              name="city" 
+              name="city"
+              defaultValue={client?.city}
               disabled 
             />
           </div>
@@ -137,10 +166,11 @@ export const SellRegister = () => {
           <div>
             <label>Meios de Pagamento</label>
             <Select 
-            name="paymentmeans_id" 
-            placeholder="Meio de Pagamento" 
-            isClearable 
-            required 
+              name="paymentmeans_id" 
+              options={paymentOptions}
+              placeholder="Meio de Pagamento" 
+              isClearable 
+              required 
             />
           </div>
           <div>
