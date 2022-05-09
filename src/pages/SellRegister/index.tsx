@@ -8,36 +8,63 @@ import { Button, Header, Input, Select } from '../../components';
 
 import getValidationErrors from 'utils/getValidationErrors';
 
-import api from '../../services/api';
-import { Container, Content } from './styles';
 import { BsFillCheckCircleFill, BsFillXCircleFill } from 'react-icons/bs';
+import api from '../../services/api';
+import { Container, Content, RegisterDiv } from './styles';
 
 export const SellRegister = () => {
+
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
   const [client, setClients] = useState([]);
   const [product, setProducts] = useState([]);
+  const [status, setStatus] = useState([]);
+  const [payment, setPayment] = useState([]);
+
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  const dateNow = today.toLocaleDateString();
 
   useEffect(() => {
     (async () => {
-      const clientresult = await api.get(`/clients`);
+      const clientResult = await api.get(`/clients/active`);
 
-      const clientdata = clientresult.data.map((c: any) => ({
+      const clientData = clientResult.data.map((c: any) => ({
         value: c.id,
         label: c.name,
       }));
 
-      setClients(clientdata);
+      setClients(clientData);
     })();
     (async () => {
-      const productresult = await api.get(`/products`);
+      const productResult = await api.get(`/products/active`);
 
-      const productdata = productresult.data.map((p: any) => ({
+      const productData = productResult.data.map((p: any) => ({
         value: p.id,
         label: p.name,
       }));
 
-      setProducts(productdata);
+      setProducts(productData);
+    })();
+    (async () => {
+      const statusResult = await api.get(`/status`);
+
+      const statusData = statusResult.data.map((p: any) => ({
+        value: p.id,
+        label: p.paid,
+      }));
+
+      setStatus(statusData);
+    })();
+    (async () => {
+      const paymentResult = await api.get(`/payment`);
+
+      const paymentData = paymentResult.data.map((p: any) => ({
+        value: p.id,
+        label: p.options,
+      }));
+
+      setPayment(paymentData);
     })();
   }, []);
 
@@ -62,13 +89,29 @@ export const SellRegister = () => {
           <div>
             <label>Nome</label>
             <Select 
-            name="client_id" 
-            options={client} 
-            placeholder="Escolha um Cliente" 
-            isClearable 
-            required 
+              name="client_id" 
+              options={client} 
+              placeholder="Escolha um Cliente" 
+              isClearable 
+              required 
             />
           </div>
+          <div className='disabled'>
+            <label>Telefone</label>
+            <Input 
+              className="disabled_input" 
+              name="phone" 
+              disabled
+            />
+          </div>
+          <div className='disabled'>
+            <label>Cidade</label>
+            <Input 
+              name="city" 
+              disabled 
+            />
+          </div>
+
           <div>
             <label>Produtos</label>
             <Select 
@@ -79,32 +122,18 @@ export const SellRegister = () => {
             required 
             />
           </div>
+
           <div>
             <label>Formas de Pagamento</label>
             <Select 
-            name="paymentform_id" 
-            placeholder="Forma de Pagamento" 
+            name="paymentForm_id" 
+            placeholder="Forma de Pagamento"
+            options={payment}
             isClearable 
             required 
             />
           </div>
-          <div>
-            <label>Telefone</label>
-            <Input 
-            className="disabled_input" 
-            name="phone_id" 
-            disabled 
-            required 
-            />
-          </div>
-          <div>
-            <label>Cidade</label>
-            <Input 
-            name="city_id" 
-            disabled 
-            required 
-            />
-          </div>
+          
           <div>
             <label>Meios de Pagamento</label>
             <Select 
@@ -121,53 +150,71 @@ export const SellRegister = () => {
             disabled
              />
           </div>
-          <div>
-            <label>Desconto</label>
-            <Input 
-            name="discount_id" 
-            placeholder="Desconto" 
-            type="text" 
-            />
+          
+          <div className='flex'>
+            <RegisterDiv>
+              <div>
+                <label>Desconto</label>
+                <Input 
+                name="discount_id" 
+                placeholder="Desconto" 
+                type="text" 
+                />
+              </div>
+            </RegisterDiv>
+            <RegisterDiv>
+              <div>
+                <label>Preço Total</label>
+                <Input 
+                name="totalprice_id" 
+                placeholder="R$00.00" 
+                disabled 
+                />
+              </div>
+            </RegisterDiv>
           </div>
-          <div>
-            <label>Preço Total</label>
-            <Input 
-            name="totalprice_id" 
-            placeholder="R$00.00" 
-            disabled 
-            />
-          </div>
+
           <div>
             <label>Status do Pedido</label>
             <Select 
             name="orderstatus_id" 
             placeholder="Escolha o status do pedido" 
+            options={status}
             required 
             />
           </div>
-          <div>
-            <label>Data de Venda</label>
-            <Input 
-            name="selldate_id" 
-            placeholder="Data da Venda" 
-            disabled 
-            />
+          
+          <div className='register'>
+            <RegisterDiv>
+              <div className='disabled'>
+                <label>Data de Venda</label>
+                <Input 
+                  name="sellDate_id" 
+                  placeholder="Data da Venda"
+                  defaultValue={dateNow}
+                  disabled 
+                />
+              </div>
+            </RegisterDiv>
+            <RegisterDiv>
+              <div className='disabled'>
+                <label>Código</label>
+                <Input 
+                  name="code_id" 
+                  disabled 
+                />
+              </div>
+            </RegisterDiv>
           </div>
-          <div>
-            <label>Codígo</label>
-            <Input 
-            name="code_id" 
-            disabled 
-            />
-          </div>
-            <Button type="submit">
+          
+          <Button type="submit">
             <BsFillCheckCircleFill />
             <span>Salvar</span>
-            </Button>
-            <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/sales/new')}>
+          </Button>
+          <Button type="submit" color="#9C1524" className="button_cancel" onClick={() => navigate('/sells')}>
             <BsFillXCircleFill />
-              <span>Cancelar</span>
-            </Button>
+            <span>Cancelar</span>
+          </Button>
         </Form>
       </Content>
     </Container>

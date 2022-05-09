@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 0.5rem;
@@ -24,13 +24,13 @@ export const Content = styled.div`
     }
 
     button {
-    width: 200px;
-    height: 55px;
-    display: block;
-    position: absolute;
-    bottom: 0.7rem;
-    margin-right: auto;
-    right: 45px;
+      width: 200px;
+      height: 55px;
+      display: block;
+      position: absolute;
+      bottom: 0.7rem;
+      margin-right: auto;
+      right: 45px;
     
       span {
         margin-left: 0.3rem;
@@ -39,6 +39,25 @@ export const Content = styled.div`
 
     .button_cancel { 
       right: 255px;
-      }
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .disabled > div {
+      background-color: #f5f5f5;
+    }
+
+    .register {
+      display: flex;
+      position: absolute;
+      bottom: 0.7rem;
+    }
   }
 `;
+
+export const RegisterDiv = styled.div`
+  width: 14.5vw;
+  margin-right: 1vw;
+`
