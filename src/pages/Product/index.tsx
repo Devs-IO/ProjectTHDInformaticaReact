@@ -72,14 +72,6 @@ export const Product = () => {
     }
   }, []);
 
-  if (data.length === 0) {
-    return (
-      <Container>
-        <Header>Carregando os produtos</Header>
-        <hr />
-      </Container>
-    );
-  }
 
   return (
     <Container>
@@ -95,6 +87,7 @@ export const Product = () => {
           <InputSearch name="search" placeholder="Buscar Produtos" />
         </Form>
         {data.length > 0 && <Table data={data} head={head} link="products" />}
+        {data.length === 0 && <p> Não há produtos a serem exibidos!</p>}
       </Content>
     </Container>
   );
