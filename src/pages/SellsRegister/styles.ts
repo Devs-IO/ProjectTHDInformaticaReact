@@ -61,3 +61,8 @@ export const RegisterDiv = styled.div`
   width: 14.5vw;
   margin-right: 1vw;
 `
+
+export const RegisterTable = styled.div`
+  /* width: 14.5vw;
+  margin-right: 1vw; */
+`
